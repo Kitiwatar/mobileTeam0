@@ -80,42 +80,58 @@ class _ProjectState extends State<Project> {
                 itemCount: projectData.length,
                 itemBuilder: (context, index) {
                   return Card(
-                    child: ListTile(
-                      leading: showIcon(projectData[index]['p_status']),
-                      title: Text(
-                        '${projectData[index]['p_name']}',
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                      subtitle: showStatus(projectData[index]['p_status']),
-                      trailing: TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => ListTask(
-                                          projectData[index]['p_id'],
-                                          projectData[index]['p_name'],
-                                          projectData[index]['p_status'],
-                                          projectData[index]['p_createdate'],
-                                          projectData[index]['p_enddate'])))
-                              .then((value) => setState(() {
-                                    getProjects();
-                                  }));
-                        },
-                        style: ButtonStyle(
-                          overlayColor:
-                              MaterialStateProperty.resolveWith<Color>(
-                            (Set<MaterialState> states) {
-                              return Colors.transparent;
-                            },
-                          ),
-                          splashFactory: NoSplash.splashFactory,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ListTask(
+                                        projectData[index]['p_id'],
+                                        projectData[index]['p_name'],
+                                        projectData[index]['p_status'],
+                                        projectData[index]['p_createdate'],
+                                        projectData[index]['p_enddate'])))
+                            .then((value) => setState(() {
+                                  getProjects();
+                                }));
+                      },
+                      child: ListTile(
+                        leading: showIcon(projectData[index]['p_status']),
+                        title: Text(
+                          '${projectData[index]['p_name']}',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
                         ),
-                        child: Icon(
-                          Icons.arrow_forward_ios,
-                          size: 25.0,
-                          color: Colors.blue,
+                        subtitle: showStatus(projectData[index]['p_status']),
+                        trailing: TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ListTask(
+                                            projectData[index]['p_id'],
+                                            projectData[index]['p_name'],
+                                            projectData[index]['p_status'],
+                                            projectData[index]['p_createdate'],
+                                            projectData[index]['p_enddate'])))
+                                .then((value) => setState(() {
+                                      getProjects();
+                                    }));
+                          },
+                          style: ButtonStyle(
+                            overlayColor:
+                                MaterialStateProperty.resolveWith<Color>(
+                              (Set<MaterialState> states) {
+                                return Colors.transparent;
+                              },
+                            ),
+                            splashFactory: NoSplash.splashFactory,
+                          ),
+                          child: Icon(
+                            Icons.arrow_forward_ios,
+                            size: 25.0,
+                            color: Colors.blue,
+                          ),
                         ),
                       ),
                     ),

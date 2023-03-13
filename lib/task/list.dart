@@ -125,7 +125,7 @@ class _ListTaskState extends State<ListTask> {
                                         getTasks();
                                       }));
                               final snackBar = SnackBar(
-                                content: const Text('ลบกรรมสำเร็จ'),
+                                content: const Text('ลบกิจกรรมสำเร็จ'),
                               );
                               ScaffoldMessenger.of(context)
                                   .showSnackBar(snackBar);
